@@ -1,8 +1,6 @@
 from rich import print
 import requests
 
-
-
 ##############
 # Parameters
 ##############
@@ -21,4 +19,11 @@ REQUEST_URL = f"{RESOURCE_PATH}?ids={LICHESS_ID}"
 # Request
 ##############
 result = requests.get(REQUEST_URL)
-print(result.json())
+data = result.json()
+
+##############
+# Get "name"
+##############
+first_user = data[0]
+user_name = first_user["name"]
+print(user_name)

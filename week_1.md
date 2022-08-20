@@ -5,7 +5,6 @@ The goals for this week:
 1. Getting comfortable with Python concepts
 2. Retrieving data from lichess.com's web API
 
-
 ### Resources
 * [Lichess API documentation](https://lichess.org/api#section/Introduction/Endpoint)
 
@@ -25,9 +24,6 @@ The goals for this week:
 * Dictionary / Key & Value pair
 * List / Array / Collection
 * Python packages / Pip
-* 
-
-
 
 ## Crash Course in Pull Chess Data
 One of the most common tasks done in programming is retrieving data from a [web API](https://en.wikipedia.org/wiki/Web_API). "API" stands for application programming interface. It is a way for two computer systems to interact without a user interface being involved. 
@@ -208,4 +204,48 @@ Now, the `first_user` variable will contain the following data.
     "id": "cross_online"
 }
 ```
-Of course, this is a 
+Of course, this is only halfway there. We need the value from "name," but this time it is a dictionary, not a list. However, dictionaries also allow you to use square brackets to retrieve a value. But with dictionaries, they will want a written name. Let's look.
+
+```python
+...
+users_name = first_user["name"]
+```
+This tells Python, "We want the value for the key `name` in the dictionary `first_user`. Once retrieved, assign the value to the variable `users_name`.
+
+Ok, let's look at the full code.
+
+```python
+from rich import print
+import requests
+
+##############
+# Parameters
+##############
+LICHESS_ID = "Cross_online"
+
+##############
+# Constants
+##############
+LICHESS_API_PATH = "https://lichess.org/api/"
+ENDPOINT = "users/status"
+
+RESOURCE_PATH = f"{LICHESS_API_PATH}{ENDPOINT}"
+REQUEST_URL = f"{RESOURCE_PATH}?ids={LICHESS_ID}"
+
+##############
+# Request
+##############
+result = requests.get(REQUEST_URL)
+data = result.json()
+
+##############
+# Get "name"
+##############
+first_user = data[0]
+user_name = first_user["name"]
+print(user_name)
+```
+> Note, before running this code you will need to install the `rich` package. To do that, follow the tutorial linked above on how to use the `pip` package manager. Or, simply go to the command line and type, `pip install rich`.
+
+> Challenge: Take this code and run it yourself; refer to the documentation, adjust it to add a second Lichess user to the result set.
+
