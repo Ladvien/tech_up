@@ -261,4 +261,5 @@ Using the following resources, create a Python script which will do the followin
    3. Their total playtime.
 
 > Hint, the full resource path is https://lichess.org/api/user/{username} and you will need to replace the username.
+
 > Hint, when you retrieve a result from the `requests` library, you must attempt to convert it to a Python dictionary. This is done with the `json()` method. However, you will need to ensure the `status_code` is `200` before running `json()` as if there is no JSON data in the result you will get a weird error in Python.
