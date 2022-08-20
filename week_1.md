@@ -10,15 +10,23 @@ The goals for this week:
 * [Lichess API documentation](https://lichess.org/api#section/Introduction/Endpoint)
 
 ### Videos to watch:
+* [pip -- Python Package Installer](https://www.youtube.com/watch?v=0PUxUMZJWu4)
 * [JSON Crash Course](https://youtu.be/GpOO5iKzOmY)
 * [21. Python dictionaries](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412524#overview)
 * [235. Code for this section](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15206672)
 * [236. Signing up to OpenExchangeRates](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15206674#overview)
 * [237. Getting all exchange rates from the API](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15206678#overview)
 
-### Questions to Answer
-> Quiz #1: What does the status code "200" mean?
-> Quiz #2: When making an update to a resource what verb(s) should be used?
+### Concepts Learned by End
+* Web API
+* HTML
+* HTTP / HTTPS
+* JSON
+* Dictionary / Key & Value pair
+* List / Array / Collection
+* Python packages / Pip
+* 
+
 
 
 ## Crash Course in Pull Chess Data
@@ -124,7 +132,7 @@ Notice how the web browser knows exactly what to do with the file? Web browsers 
 
 * [JSON Crash Course](https://youtu.be/GpOO5iKzOmY)
 
-Before we move on, it is important to know Python converts JSON objects into Python dictionaries usually. However, this is not always the case.  Let's look at some JSON.
+Let's look at some JSON.
 
 ```json
 [
@@ -139,6 +147,8 @@ Above is the data sent back when requesting results from the Lichess.com web API
 
 * [GET: Get realtime user status](https://lichess.org/api#tag/Users/operation/apiUsersStatus)
 
+> Important: Python programmers often convert JSON objects into Python dictionaries, however, this is not always the case. And programmers often use the terms "dictionary" and "JSON" interchangeably, even though they are technically different.
+
 These data can then be transformed and sent elsewhere, such as a database. Or used for visualization. Most JSON responses will contain an array (everything between `[]`) and inside the array dictionaries (stuff between `{}`).  Inside of these dictionaries, much like a real dictionary, there is a key and a value. These values can be retrieved from a dictionary with knowing the index and the key pair. For example, the `name` of the user retrieved can be found at the array's index `0` then the `key` `name`.  This will make more sense in the next section where we walk through the Python code to retrieve these data.
 
 ### Python Requests Library
@@ -148,12 +158,10 @@ Let's look at the Python code to retrieve the Lichess realtime status of a user.
 from rich import print
 import requests
 
-
-
 ##############
 # Parameters
 ##############
-LICHESS_ID = "<YOUR_ID>"
+LICHESS_ID = "Cross_online"
 
 ##############
 # Constants
@@ -173,6 +181,31 @@ data = result.json()
 ##############
 # Get "name"
 ##############
-
 ```
+First, we know all users are in an array. To get back the user we want, we need to know where in the array they are. For us, we know there's only one user called "Cross_Online" and since programmers start everything with `0` we know the user we seek at is the `0` index in the list
 
+> A list of items has many names: "Collection," "Array," "List." Programmers have a bad habit of using these interchangeably. But in Python the idiomatic name is `list`.
+
+Going back to our example, 
+```json
+[
+    {
+        "name": "cross_online", 
+        "id": "cross_online"
+    }
+]
+```
+We can use square brackets attached to an item to retrieve the value of a list.
+
+```python
+...
+first_user = data[0]
+```
+Now, the `first_user` variable will contain the following data.
+```json
+{
+    "name": "cross_online", 
+    "id": "cross_online"
+}
+```
+Of course, this is a 
