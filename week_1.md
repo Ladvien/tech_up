@@ -137,6 +137,42 @@ Before we move on, it is important to know Python converts JSON objects into Pyt
 
 Above is the data sent back when requesting results from the Lichess.com web API resource:
 
-* [GET: Masters Database](https://lichess.org/api#tag/Opening-Explorer/operation/openingExplorerMaster)
+* [GET: Get realtime user status](https://lichess.org/api#tag/Users/operation/apiUsersStatus)
 
-These data can then be transformed and sent elsewhere, such as a database.  Or used for visualization.
+These data can then be transformed and sent elsewhere, such as a database. Or used for visualization. Most JSON responses will contain an array (everything between `[]`) and inside the array dictionaries (stuff between `{}`).  Inside of these dictionaries, much like a real dictionary, there is a key and a value. These values can be retrieved from a dictionary with knowing the index and the key pair. For example, the `name` of the user retrieved can be found at the array's index `0` then the `key` `name`.  This will make more sense in the next section where we walk through the Python code to retrieve these data.
+
+### Python Requests Library
+Let's look at the Python code to retrieve the Lichess realtime status of a user.
+
+```python
+from rich import print
+import requests
+
+
+
+##############
+# Parameters
+##############
+LICHESS_ID = "<YOUR_ID>"
+
+##############
+# Constants
+##############
+LICHESS_API_PATH = "https://lichess.org/api/"
+ENDPOINT = "users/status"
+
+RESOURCE_PATH = f"{LICHESS_API_PATH}{ENDPOINT}"
+REQUEST_URL = f"{RESOURCE_PATH}?ids={LICHESS_ID}"
+
+##############
+# Request
+##############
+result = requests.get(REQUEST_URL)
+data = result.json()
+
+##############
+# Get "name"
+##############
+
+```
+
