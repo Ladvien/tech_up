@@ -32,3 +32,39 @@ print(result.status_code)
 This code will print out the status code for retrieving the webpage.
 
 ![web-request-result](media/status_code.png)
+
+Here is a list of status codes:
+
+* [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+> Quiz #1: What does the status code "200" mean?
+
+### Web API Verbs
+Programmers love to have a pattern when writing code. This helps us ensure the code is understandable as it grows. That is, if you write 50 lines of code and leave for a day, come back, it is not too hard to get your head back into. But if you have 10,000 lines of code across 20 files, if you don't have a pattern across all of the code then you don't have a mental model to understand the code. Each line must be understood one-by-one. This makes it exceed a cognitive complexity threshold. You may also hear developers talk about a project's "complexity budget."
+
+Web API requests follow a well defined pattern. It has two major parts. The action one wants to take, followed by the resource one wants to take the action on.
+
+In English we would say, "Jimmy got the ball."  With web APIs we would say, "Jonathan got the Wikipedia page on 'Web API's."  These sentences express complete thoughts.
+
+Now, let's compare it to a web API request.
+```
+GET https://en.wikipedia.org/wiki/Web_API
+```
+Or going back to the Python code:
+```python
+result = requests.get("https://en.wikipedia.org/wiki/Web_API")
+```
+
+The `"https://en.wikipedia.org/wiki/Web_API"` is the resource and `get` is what we want do with it. Of course, there are many other words besides `get`. But each of them will be an action word, or, verb.  As such, we refer to these commands as the "HTTP verbs."
+
+Here is a fairly complete list. Please read through all of them.
+
+* [HTTP Verbs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+
+If you go back to inspecting the network traffic on Wikipedia, you can click on a request entry and see more details about the request, including the request method (aka, verb).
+
+![request-method](media/request_method.png)
+
+> Quiz #2: When making an update to a resource what verb(s) should be used?
+
+### HTML and JSON
