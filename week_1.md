@@ -2,16 +2,22 @@
 
 ## Summary
 The goals for this week: 
-1. Getting comfortable with Python concepts
-2. Retrieving data from lichess.com's web API
+1. Getting comfortable with general Python concepts
+2. Basic understanding of web APIs.
+3. Retrieving data from lichess.com's web API
 
 ### Resources
 * [Lichess API documentation](https://lichess.org/api#section/Introduction/Endpoint)
 
 ### Videos to watch:
 * [pip -- Python Package Installer](https://www.youtube.com/watch?v=0PUxUMZJWu4)
-* [JSON Crash Course](https://youtu.be/GpOO5iKzOmY)
+* [10. Python Strings](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412510#overview)
+* [11. Python String Formatting](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218114#overview)
+* [16. Lists](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412520#overview)
+* [37. List Slicing](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412532#overview)
+* [24. Joining Lists](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218152#overview)
 * [21. Python dictionaries](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412524#overview)
+* [JSON Crash Course](https://youtu.be/GpOO5iKzOmY)
 * [235. Code for this section](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15206672)
 * [236. Signing up to OpenExchangeRates](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15206674#overview)
 * [237. Getting all exchange rates from the API](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15206678#overview)
@@ -252,7 +258,7 @@ print(user_name)
 ## Homework Assignment
 Using the following resources, create a Python script which will do the following.
 
-* [API Documentation](https://lichess.org/api#tag/Users/operation/apiUser)
+* [Lichess User Web API Documentation](https://lichess.org/api#tag/Users/operation/apiUser)
 
 1. Retrieve a user's public data.
 2. Print the user's
