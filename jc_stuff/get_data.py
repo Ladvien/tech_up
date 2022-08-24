@@ -4,5 +4,7 @@ result = requests.get("https://lichess.org/api")
 print(result.status_code)
 
 user = requests.get("https://lichess.org/api/user/cross_online")
-pprint(user.json())
-pprint(user['bio']['createdAt']["playTime": {"total"}])
+
+pprint(user.json()["profile"]["bio"])
+pprint(user.json()["createdAt"])
+pprint(user.json()["playTime"]["total"])
