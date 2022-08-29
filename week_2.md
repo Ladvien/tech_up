@@ -11,6 +11,15 @@ The goals for this week:
 
 ### Videos to watch:
 * [Understanding Syntax](https://www.youtube.com/watch?v=Y69OtFzeY-Y)
+* [44. Functions in Python](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412540#overview)
+* [45. Arguments and Parameters](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218270#overview)
+* [46. Functions and return values in Python](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412544#overview)
+* [47. Default parameter values](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218272#overview)
+
+### Videos to Rewatch if Needed
+* [16. Lists](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412520#overview)
+* [37. List Slicing](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412532#overview)
+* [24. Joining Lists](https://www.udemy.com/course/)
   
 ### Concepts Learned
 * Python syntax
@@ -101,4 +110,90 @@ Also, `black` has a companion tool which will automatically format your code! ðŸ
 Or, if you want to format all of your files in your project go to the project main directory and type `black *`.
 
 > Note, `black` can only format projects which will run. If there are syntax issues (code won't run) then `black` will give you an error when formatting them.
-> 
+
+## Functions
+Let's go back to our Lichess code from last week.
+
+```python
+from rich import print
+import requests
+
+LICHESS_ID = "Cross_online"
+LICHESS_API_PATH = "https://lichess.org/api/"
+ENDPOINT = "users/status"
+
+RESOURCE_PATH = f"{LICHESS_API_PATH}{ENDPOINT}"
+REQUEST_URL = f"{RESOURCE_PATH}?ids={LICHESS_ID}"
+
+result = requests.get(REQUEST_URL)
+data = result.json()
+
+first_user = data[0]
+user_name = first_user["name"]
+print(user_name)
+```
+
+Quick reminder, the `LICHESS_ID` is passed to the Lichess web API andpoint `users/status` and you get information back about the user's status. But this code isn't great. For example, what if you wanted to pull two user statuses? It would look something like this:
+
+```python
+from rich import print
+import requests
+
+LICHESS_ID = "Cross_online"
+LICHESS_ID_2 = "Bob"
+
+LICHESS_API_PATH = "https://lichess.org/api/"
+ENDPOINT = "users/status"
+
+RESOURCE_PATH = f"{LICHESS_API_PATH}{ENDPOINT}"
+REQUEST_URL = f"{RESOURCE_PATH}?ids={LICHESS_ID}"
+REQUEST_URL_2 = f"{RESOURCE_PATH}?ids={LICHESS_ID_2}"
+
+result = requests.get(REQUEST_URL)
+data = result.json()
+
+result2 = requests.get(REQUEST_URL)
+data2 = result2.json()
+
+first_user = data[0]
+user_name = first_user["name"]
+print(user_name)
+
+first_user2 = data2[0]
+user_name2 = first_user2["name"]
+print(user_name2)
+```
+As you can see, this script repeats almost every line for `bombegranate`. This means we wrote twice as much code, which wasted a lot of time and now is twice the area where a bug may appear. This is an extremely common problem in programming, so much we have a mnemonic for it: "Don't Repeat Yourself."  Or "DRY."  And the opposite of "DRY" code we call "WET." Or, "Write Everything Twice." Yeah, I know, programmers think they are funnier than they are.
+
+Let's try to "DRY" the code up a bit. One of the easiest ways to make code more reusable, therefore DRY, is by using functions and classes. For now, let's focus on just functions and rewrite the above code using a function.
+
+```python
+from rich import print
+import requests
+
+LICHESS_ID = "Cross_online"
+LICHESS_API_PATH = "https://lichess.org/api/"
+
+def get_user(user_id):
+    url = f"{LICHESS_API_PATH}users/status?ids={user_id}"
+    data = requests.get(url)
+    return data
+
+
+result = get_user(LICHESS_ID)
+data = result.json()
+
+first_user = data[0]
+user_name = first_user["name"]
+print(user_name)
+
+result2 = get_user("bombegranate")
+print(list(result2))
+```
+
+Here we have added the `get_user()` function and it takes on argument, `user_id`. This cleans the code up a bit, but it is still WET. We need to address the duplicated lines such as `first_user = data[0]`, this should be the same for every user we retrieve.
+
+The interesting thing to note is the user status endpoint in Lichess takes a list of player ids, such as `cross_online,bombegranate`. 
+
+> Challenge #1: Rewrite the code above so the `get_user` function takes a list of user ids. E.g., `["cross_online", "bombegranate"]` and returns the data retrieved from Lichess. 
+

@@ -1,29 +1,22 @@
 from rich import print
 import requests
 
-##############
-# Parameters
-##############
 LICHESS_ID = "Cross_online"
-
-##############
-# Constants
-##############
 LICHESS_API_PATH = "https://lichess.org/api/"
-ENDPOINT = "users/status"
 
-RESOURCE_PATH = f"{LICHESS_API_PATH}{ENDPOINT}"
-REQUEST_URL = f"{RESOURCE_PATH}?ids={LICHESS_ID}"
 
-##############
-# Request
-##############
-result = requests.get(REQUEST_URL)
+def get_user(user_id):
+    url = f"{LICHESS_API_PATH}users/status?ids={user_id}"
+    data = requests.get(url)
+    return data
+
+
+result = get_user(LICHESS_ID)
 data = result.json()
 
-##############
-# Get "name"
-##############
 first_user = data[0]
 user_name = first_user["name"]
 print(user_name)
+
+result2 = get_user("bombegranate")
+print(list(result2))
