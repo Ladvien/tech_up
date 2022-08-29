@@ -199,9 +199,45 @@ The interesting thing to note is the user status endpoint in Lichess takes a lis
 
 > Challenge #1: Rewrite the code above so the `get_user` function takes a list of user ids. E.g., `["cross_online", "bombegranate"]` and returns the data retrieved from Lichess. 
 
-> Note, the data set back is stored in an `object`, more on those later, but know you will need to convert this to a list like so, `list(data)`.
+> Note, the data sent back is stored in an `object`, more on those later, but know you will need to convert this to a list like so, `list(data)`.
 
 
+## Lichess SDK
+One of the reasons Python is extremely popular is the amount of libraries out there. If you have something you want to get done, most likely, someone has already written a library for you. These libraries are key to allow someone from a different profession to quickly get something done, whether it is marine biology or astrophysics.
+
+Chess is no different. There are currently [275](https://pypi.org/search/?q=chess) libraries listed for chess in Python. And probably many more unlisted.
+
+Let's take Lichess again. There are several libraries for it, but let's work with the most popular.  By the way, "libraries" can also be called "packages," "modules," "SDK" (software development kit), or "framework."  And though all those terms have technical differences, many programmers use the terms interchangeably. Ok, let's on with it.
+
+We are going to install Lichess' official SDK:
+* [berserk](https://berserk.readthedocs.io/en/master/installation.html)
+
+You can do so by opening a terminal and typing:
+```sh
+pip install berserk
+```
+And let's run this script:
+
+```py
+import berserk
+from rich import print
+
+USERNAME = "cross_online"
+
+client = berserk.Client()
+
+# Get realtime status
+print(client.users.get_realtime_statuses(USERNAME))
+
+# Get public adata
+print(client.users.get_public_data(USERNAME))
+```
+Nice, right!? Very little effort on our part and we got a user's realtime status and all their public data. _This_ is the power of Python; the power to get stuff done.
 
 
+## Homework Assignment
+Using the `beserk` SDK do the following:
 
+1. 
+
+* [berserk documentation](https://berserk.readthedocs.io/en/master/usage.html)
