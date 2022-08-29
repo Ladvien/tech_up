@@ -27,7 +27,7 @@ The goals for this week:
 ### Concepts Learned
 * Python syntax
 * Formatting and style guides
-* Python methods
+* Python functions
 
 
 ## Python Syntax
