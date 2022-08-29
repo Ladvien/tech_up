@@ -15,6 +15,8 @@ The goals for this week:
 * [45. Arguments and Parameters](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218270#overview)
 * [46. Functions and return values in Python](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412544#overview)
 * [47. Default parameter values](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218272#overview)
+* [10. Python Strings](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412510#overview)
+* [11. Python String Formatting](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218114#overview)
 
 ### Videos to Rewatch if Needed
 * [16. Lists](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412520#overview)
@@ -196,4 +198,10 @@ Here we have added the `get_user()` function and it takes on argument, `user_id`
 The interesting thing to note is the user status endpoint in Lichess takes a list of player ids, such as `cross_online,bombegranate`. 
 
 > Challenge #1: Rewrite the code above so the `get_user` function takes a list of user ids. E.g., `["cross_online", "bombegranate"]` and returns the data retrieved from Lichess. 
+
+> Note, the data set back is stored in an `object`, more on those later, but know you will need to convert this to a list like so, `list(data)`.
+
+
+
+
 
