@@ -17,6 +17,7 @@ The goals for this week:
 * [47. Default parameter values](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218272#overview)
 * [10. Python Strings](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412510#overview)
 * [11. Python String Formatting](https://www.udemy.com/course/the-complete-python-course/learn/lecture/15218114#overview)
+* [29. For Loops](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9413286#overview)
 
 ### Videos to Rewatch if Needed
 * [16. Lists](https://www.udemy.com/course/the-complete-python-course/learn/lecture/9412520#overview)
@@ -238,6 +239,14 @@ Nice, right!? Very little effort on our part and we got a user's realtime status
 ## Homework Assignment
 Using the `beserk` SDK do the following:
 
-1. 
+1. Using the `berserk` SDK do the following:
+   1. Export a list of all of `cross_online`'s games
+   2. Set the `max` argument to 200.
+   3. Set the `evals` argument to `True`
+   4. Set the `moves` argument to `True`
+   5. Set the `openings` argument to `True`
+2. The result object will need to be converted to a `list` (e.g., `list(result)`).
+3. Loop through the list and print out the white player's user name, the black player's user name, and the `moves`  from each of the games in the list.
+4. (Bonus) write the `moves` to a file.
 
 * [berserk documentation](https://berserk.readthedocs.io/en/master/usage.html)
